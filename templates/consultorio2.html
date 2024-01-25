@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Diagnóstico</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+      body {
+          background-color: #e6f7ff;
+      }
+  </style>
+  </head>
+<body>
+    <nav class="navbar bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="display: flex; align-items: center;">
+                <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo" width="40" height="34" style="margin-right: 20px;">
+                <p class="text-white" style="margin-bottom: 0; font-weight: bold;">Hospital Corregidora</p>
+            </a>
+        </div>
+    </nav>
+    <div class="container-fluid mt-4 center-container">
+      <div class="row justify-content-center">
+          <div class="col-md-8 text-center">
+              <h2 style="background-color: #b3e0ff; padding: 10px;">CONSULTORIO 2</h2>
+          </div>
+      </div>
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Datos del Paciente</h5>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" name="txtNombre">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="apellidoPaterno">Apellido Paterno:</label>
+                                    <input type="text" class="form-control" id="apellidoPaterno" placeholder="Ingrese su apellido paterno" name="txtAP">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="apellidoMaterno">Apellido Materno:</label>
+                                    <input type="text" class="form-control" id="apellidoMaterno" placeholder="Ingrese su apellido materno" name="txtAM">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="edad">Edad:</label>
+                                    <input type="number" class="form-control" id="edad" placeholder="Ingrese su edad" name="txtEdad">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Pruebas</h5>
+                        <form>
+                            <div class="form-group">
+                                <label for="fiebre">¿Tiene fiebre?</label>
+                                <select class="form-control" id="fiebre">
+                                    <option value="si">Sí</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tos">¿Tiene tos seca?</label>
+                                <select class="form-control" id="tos">
+                                    <option value="si">Sí</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="dificultadRespirar">¿Tiene dificultad para respirar?</label>
+                                <select class="form-control" id="dificultadRespirar">
+                                    <option value="si">Sí</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="congestionNasal">¿Tiene congestión nasal?</label>
+                                <select class="form-control" id="congestionNasal">
+                                    <option value="si">Sí</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactoCovid">¿Ha tenido contacto reciente con alguien diagnosticado con COVID-19?</label>
+                                <select class="form-control" id="contactoCovid">
+                                <option value="si">Sí</option>
+                                <option value="no">No</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Diagnóstico</h5>
+                        <form>
+                            <div class="form-group">
+                              <label for="medico">Médico:</label>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="nombre">Nombre:</label>
+                                  <input type="text" class="form-control" id="nombre">
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="apellidoPaterno">Apellido Paterno:</label>
+                                  <input type="text" class="form-control" id="apellidoPaterno">
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="apellidoMaterno">Apellido Materno:</label>
+                                  <input type="text" class="form-control" id="apellidoMaterno">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="paciente">Paciente:</label>
+                              <div class="form-row">
+                                <div class="form-group col-md-4">
+                                  <label for="nombre">Nombre:</label>
+                                  <input type="text" class="form-control" id="nombre">
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="apellidoPaterno">Apellido Paterno:</label>
+                                  <input type="text" class="form-control" id="apellidoPaterno">
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="apellidoMaterno">Apellido Materno:</label>
+                                  <input type="text" class="form-control" id="apellidoMaterno">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="enfermedad">Enfermedad:</label>
+                              <select class="form-control" id="enfermedad">
+                                <option value="gripe">Gripe</option>
+                                <option value="covid19">COVID-19</option>
+                                <option value="resfriadoComun">Resfriado Común</option>
+                              </select>
+                            </div>                
+                            <div class="form-group">
+                              <label for="fechaDiagnostico">Fecha de Diagnóstico:</label>
+                              <input type="date" class="form-control" id="fechaDiagnostico">
+                            </div>
+                            <div class="form-group">
+                              <label for="observaciones">Observaciones:</label>
+                              <textarea class="form-control" id="observaciones" rows="3" placeholder="Ingrese observaciones"></textarea>
+                            </div>
+                            <div class="text-center">
+                              <button type="button" class="btn btn-primary" onclick="generarDiagnostico()">Generar Diagnóstico</button>
+                            </div>
+                          </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Función para determinar el diagnóstico basado en las respuestas
+        function determinarDiagnostico() {
+          // Obtener los valores de las respuestas
+          const fiebre = document.getElementById('fiebre').value;
+          const tos = document.getElementById('tos').value;
+          const dificultadRespirar = document.getElementById('dificultadRespirar').value;
+          const congestionNasal = document.getElementById('congestionNasal').value;
+          const contactoCovid = document.getElementById('contactoCovid').value;
+      
+          // Realizar las evaluaciones
+          if (fiebre === 'si' && tos === 'si' && dificultadRespirar === 'si') {
+            // El paciente tiene fiebre, tos seca y dificultad para respirar, el diagnóstico es COVID-19
+            document.getElementById('enfermedad').value = 'covid19';
+          } else if (fiebre === 'si' && tos === 'si') {
+            // El paciente tiene fiebre y tos seca, el diagnóstico es gripe
+            document.getElementById('enfermedad').value = 'gripe';
+          } else if (fiebre === 'si' && congestionNasal === 'si') {
+            // El paciente tiene fiebre y congestión nasal, el diagnóstico es resfriado común
+            document.getElementById('enfermedad').value = 'resfriadoComun';
+          } else if (fiebre === 'no') {
+            // El paciente no tiene fiebre, podría tener resfriado común
+            document.getElementById('enfermedad').value = 'resfriadoComun';
+          } else if (fiebre === 'si' && contactoCovid === 'si') {
+            // El paciente tiene fiebre y ha tenido contacto con alguien diagnosticado con COVID-19, el diagnóstico es COVID-19
+            document.getElementById('enfermedad').value = 'covid19';
+          } else {
+            // En otros casos, no se puede determinar con certeza
+            document.getElementById('enfermedad').value = '';
+          }
+        }
+      
+        // Agregar event listeners para los cambios en los select
+        document.getElementById('fiebre').addEventListener('change', determinarDiagnostico);
+        document.getElementById('tos').addEventListener('change', determinarDiagnostico);
+        document.getElementById('dificultadRespirar').addEventListener('change', determinarDiagnostico);
+        document.getElementById('congestionNasal').addEventListener('change', determinarDiagnostico);
+        document.getElementById('contactoCovid').addEventListener('change', determinarDiagnostico);
+      </script>
+    
+      <script>
+        // Función para obtener la fecha actual en formato YYYY-MM-DD
+        function obtenerFechaActual() {
+          const fecha = new Date();
+          const anio = fecha.getFullYear();
+          let mes = fecha.getMonth() + 1;
+          if (mes < 10) {
+            mes = '0' + mes;
+          }
+          let dia = fecha.getDate();
+          if (dia < 10) {
+            dia = '0' + dia;
+          }
+          return anio + '-' + mes + '-' + dia;
+        }
+      
+        // Establecer la fecha actual al cargar la página
+        document.getElementById('fechaDiagnostico').value = obtenerFechaActual();
+      </script>
+      
+</body>
+</html>
