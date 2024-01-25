@@ -1,5 +1,4 @@
-<!DOCTYPE html> 
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -12,14 +11,19 @@
 </head>
 <body>
 
-<nav class="navbar bg-primary">
-    <div class="container-fluid">
-        <a class="navbar-brand">
-        <img src="C:\Users\canel\OneDrive\Escritorio\logo.png" alt="Logo" width="30" height="24" >
-        Hospital Corregidora
-        </a>
+    <nav class="navbar bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="display: flex; align-items: center;">
+                <img src="{{ url_for('static', filename='imagenes/logo.png') }}" alt="Logo" width="40" height="34" style="margin-right: 20px;">
+                <p class="text-white" style="margin-bottom: 0; font-weight: bold;">Hospital Corregidora</p>
+            </a>
+        </div>
+    </nav>
+
+    <div class="text-center mt-3">
+        <h1 class="card-title text-center" style="font-weight: bold; font-size: 4em;">Registro de Paciente</h1>
     </div>
-</nav>
+      
 
 <div class="container-fluid mt-4">
     <div class="row">
@@ -27,7 +31,6 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Registro de Paciente</h5>
                     <form>
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
@@ -63,8 +66,8 @@
 
         <!-- Imagen a la derecha -->
         <div class="col-md-6">
-            <img src="C:\Users\canel\OneDrive\Escritorio\medico.png" class="img-fluid" alt="Imagen de fondo">
-        </div>
+            <img src="{{ url_for('static', filename='imagenes/medico.png') }}" class="img-fluid" alt="Imagen de fondo">
+        </div>        
     </div>
 </div>
 
