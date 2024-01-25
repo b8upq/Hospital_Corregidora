@@ -1,14 +1,21 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
+import controlador
 
+# Instancia de Flask
 app = Flask(__name__)
 
-# Sintaxis basica para crear una ruta
+#Sintaxis basica para crear una ruta
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('Registro.html')
 
-@app.route('/registro')
-def registro_pacientes():
+@app.route('/registro', methods=['GET', 'POST'])
+def index_registro():
+    nombre = request.form['txtNombre']
+    apellidopaterno = request.form['txtAP']
+    apellidomaterno = request.form['txtAM']
+    edad = request.form['txtEdad']
+    controlador.registrar_persona(nombre, apellidopaterno, apellidomaterno, edad)
     return render_template('Registro.html')
 
 
