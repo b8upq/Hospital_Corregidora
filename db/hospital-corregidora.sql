@@ -9,6 +9,7 @@ CREATE TABLE `personas` (
     `ApellidoPaterno` varchar(255) DEFAULT NULL,
     `ApellidoMaterno` varchar(255) DEFAULT NULL,
     `Edad` int DEFAULT NULL,
+    `Sexo` char DEFAULT NULL,
     PRIMARY KEY (`PersonaID`)
 )
 
