@@ -102,7 +102,35 @@ def diagnostico2():
 #Se declara la ruta para el consultorio 3
 @app.route('/consultorio/3')
 def consultorio3():
-    return render_template('consultorio3.html')
+    ultimo_paciente = controlador.extraer_paciente()
+    medico_correspondiente = controlador.medico_correspondiente(3) #El 3 es el id del medico(EL QUE ESTA EN LA BASE DE DATOS)
+    return render_template('consultorio3.html', ultimo_paciente=ultimo_paciente, medico_correspondiente=medico_correspondiente)
+
+#Ruta para editar los datos del paciente
+@app.route('/consultorio3', methods=['POST'])
+def con3():
+    ultimo_paciente = controlador.extraer_paciente()
+    id_paciente = ultimo_paciente[1]
+    nombre = request.form['txtNombre']
+    apellidopaterno = request.form['txtAP']
+    apellidomaterno = request.form['txtAM']
+    edad = request.form['txtEdad']
+    sexo = request.form['txtSexo']
+    controlador.editar_persona(id_paciente, nombre, apellidopaterno, apellidomaterno, edad, sexo)
+    return redirect('/consultorio/3')
+
+#Ruta para registrar el diagnostico del paciente
+@app.route('/diagnostico3', methods=['POST', 'GET'])
+def diagnostico3():
+    ultimo_paciente = controlador.extraer_paciente()
+    id_paciente = ultimo_paciente[0]
+    medico_correspondiente = controlador.medico_correspondiente(3)
+    id_medico = medico_correspondiente[0]
+    fecha_consulta = request.form['txtFecha']
+    descripcion = request.form['txtDescripcion']
+    controlador.registrar_diagnostico(id_paciente, id_medico, fecha_consulta, descripcion)
+    return redirect('/')
+
 
 # Usa el comando python app.py en la terminal para ejecutar el servidor
 if __name__ == '__main__':
