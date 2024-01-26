@@ -90,7 +90,7 @@ def con3():
     edad = request.form['txtEdad']
     sexo = request.form['txtSexo']
     controlador.editar_persona(id_paciente, nombre, apellidopaterno, apellidomaterno, edad, sexo)
-    return redirect('/consultorio/1')
+    return redirect('/consultorio/3')
 
 #Ruta para registrar el diagnostico del paciente
 @app.route('/diagnostico3', methods=['POST', 'GET'])

@@ -40,25 +40,25 @@
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label for="nombre">Nombre:</label>
-                              <input type="text" class="form-control" id="nombre" value="{{ ultimo_paciente[2] }}" name="txtNombre">
+                              <input type="text" class="form-control" id="nombre" value="{{ ultimo_paciente[2] }}" name="txtNombre" required>
                             </div>
                             <div class="form-group col-md-4">
                               <label for="apellidoPaterno">Apellido Paterno:</label>
-                              <input type="text" class="form-control" id="apellidoPaterno" value="{{ ultimo_paciente[3] }}" name="txtAP">
+                              <input type="text" class="form-control" id="apellidoPaterno" value="{{ ultimo_paciente[3] }}" name="txtAP" required>
                             </div>
                             <div class="form-group col-md-4">
                               <label for="apellidoMaterno">Apellido Materno:</label>
-                              <input type="text" class="form-control" id="apellidoMaterno" value="{{ ultimo_paciente[4] }}" name="txtAM">
+                              <input type="text" class="form-control" id="apellidoMaterno" value="{{ ultimo_paciente[4] }}" name="txtAM" required>
                             </div>
                           </div>
                           <div class="form-row">
                             <div class="form-group col-md-4">
                               <label for="edad">Edad:</label>
-                              <input type="number" class="form-control" id="edad" value="{{ ultimo_paciente[5] }}" name="txtEdad">
+                              <input type="number" class="form-control" id="edad" value="{{ ultimo_paciente[5] }}" name="txtEdad" required>
                             </div>
                             <div class="form-group col-md-4">
                               <label for="sexo">Sexo:</label>
-                              <input type="text" class="form-control" id="sexo" value="{{ ultimo_paciente[6] }}" name="txtSexo">
+                              <input type="text" class="form-control" id="sexo" value="{{ ultimo_paciente[6] }}" name="txtSexo" required>
                             </div>
                           </div>
                           <div class="text-center">
@@ -152,7 +152,7 @@
                             </div>
                             <div class="form-group">
                               <label for="observaciones">Observaciones:</label>
-                              <textarea class="form-control" id="observaciones" rows="3" name="txtDescripcion" placeholder="Ingrese observaciones"></textarea>
+                              <textarea class="form-control" id="observaciones" rows="3" name="txtDescripcion" placeholder="Ingrese observaciones" required></textarea>
                             </div>
                             <div class="text-center">
                               <button type="submit" class="btn btn-primary" onclick="generarDiagnostico()">Generar Diagnóstico</button>
