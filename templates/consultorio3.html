@@ -12,6 +12,8 @@
   </style>
   </head>
 <body>
+
+
     <nav class="navbar bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" style="display: flex; align-items: center;">
@@ -26,33 +28,42 @@
               <h2 style="background-color: #b3e0ff; padding: 10px;">CONSULTORIO 3</h2>
           </div>
       </div>
+
+
     <div class="container-fluid mt-4">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Datos del Paciente</h5>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="nombre">Nombre:</label>
-                                    <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" name="txtNombre">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="apellidoPaterno">Apellido Paterno:</label>
-                                    <input type="text" class="form-control" id="apellidoPaterno" placeholder="Ingrese su apellido paterno" name="txtAP">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="apellidoMaterno">Apellido Materno:</label>
-                                    <input type="text" class="form-control" id="apellidoMaterno" placeholder="Ingrese su apellido materno" name="txtAM">
-                                </div>
+                        <form action="/consultorio3" method='post'>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="nombre">Nombre:</label>
+                              <input type="text" class="form-control" id="nombre" value="{{ ultimo_paciente[2] }}" name="txtNombre">
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="edad">Edad:</label>
-                                    <input type="number" class="form-control" id="edad" placeholder="Ingrese su edad" name="txtEdad">
-                                </div>
+                            <div class="form-group col-md-4">
+                              <label for="apellidoPaterno">Apellido Paterno:</label>
+                              <input type="text" class="form-control" id="apellidoPaterno" value="{{ ultimo_paciente[3] }}" name="txtAP">
                             </div>
+                            <div class="form-group col-md-4">
+                              <label for="apellidoMaterno">Apellido Materno:</label>
+                              <input type="text" class="form-control" id="apellidoMaterno" value="{{ ultimo_paciente[4] }}" name="txtAM">
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-4">
+                              <label for="edad">Edad:</label>
+                              <input type="number" class="form-control" id="edad" value="{{ ultimo_paciente[5] }}" name="txtEdad">
+                            </div>
+                            <div class="form-group col-md-4">
+                              <label for="sexo">Sexo:</label>
+                              <input type="text" class="form-control" id="sexo" value="{{ ultimo_paciente[6] }}" name="txtSexo">
+                            </div>
+                          </div>
+                          <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                          </div>
                         </form>
                     </div>
                 </div>
@@ -109,38 +120,21 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-center">Diagnóstico</h5>
-                        <form>
+                        <form action="/diagnostico3", method="post">
                             <div class="form-group">
                               <label for="medico">Médico:</label>
                               <div class="form-row">
                                 <div class="form-group col-md-4">
                                   <label for="nombre">Nombre:</label>
-                                  <input type="text" class="form-control" id="nombre"  required>
+                                  <input type="text" class="form-control" id="nombre" value="{{ medico_correspondiente[3] }}" required disabled>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="apellidoPaterno">Apellido Paterno:</label>
-                                  <input type="text" class="form-control" id="apellidoPaterno" required>
+                                  <input type="text" class="form-control" id="apellidoPaterno" value="{{ medico_correspondiente[4] }}" required disabled>
                                 </div>
                                 <div class="form-group col-md-4">
                                   <label for="apellidoMaterno">Apellido Materno:</label>
-                                  <input type="text" class="form-control" id="apellidoMaterno"  required>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="paciente">Paciente:</label>
-                              <div class="form-row">
-                                <div class="form-group col-md-4">
-                                  <label for="nombre">Nombre:</label>
-                                  <input type="text" class="form-control" id="nombre" required>
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="apellidoPaterno">Apellido Paterno:</label>
-                                  <input type="text" class="form-control" id="apellidoPaterno" required>
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="apellidoMaterno">Apellido Materno:</label>
-                                  <input type="text" class="form-control" id="apellidoMaterno" required>
+                                  <input type="text" class="form-control" id="apellidoMaterno" value="{{ medico_correspondiente[5] }}" required disabled>
                                 </div>
                               </div>
                             </div>
@@ -154,14 +148,14 @@
                             </div>                
                             <div class="form-group">
                               <label for="fechaDiagnostico">Fecha de Diagnóstico:</label>
-                              <input type="date" class="form-control" id="fechaDiagnostico" required>
+                              <input type="date" class="form-control" id="fechaDiagnostico" name="txtFecha" required>
                             </div>
                             <div class="form-group">
                               <label for="observaciones">Observaciones:</label>
-                              <textarea class="form-control" id="observaciones" rows="3" placeholder="Ingrese observaciones"></textarea>
+                              <textarea class="form-control" id="observaciones" rows="3" name="txtDescripcion" placeholder="Ingrese observaciones"></textarea>
                             </div>
                             <div class="text-center">
-                              <button type="button" class="btn btn-primary" onclick="generarDiagnostico()">Generar Diagnóstico</button>
+                              <button type="submit" class="btn btn-primary" onclick="generarDiagnostico()">Generar Diagnóstico</button>
                             </div>
                           </form>
                     </div>
