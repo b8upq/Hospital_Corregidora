@@ -40,9 +40,20 @@ CREATE TABLE `diagnosticos` (
     `PacienteID` int NOT NULL,
     `MedicoID` int NOT NULL,
     `FechaConsulta` date DEFAULT NULL,
+    `Enfermedad` varchar(255) DEFAULT NULL,
     `Descripcion` varchar(255) DEFAULT NULL,
     PRIMARY KEY (`DiagnosticoID`),
     FOREIGN KEY (`PacienteID`) REFERENCES `pacientes` (`PacienteID`),
     FOREIGN KEY (`MedicoID`) REFERENCES `medicos` (`MedicoID`)
 )
 
+-- Inserciones a la base de datos
+
+INSERT INTO `consultorios` (`NombreConsultorio`) 
+VALUES ('Consultorio 1'), ('Consultorio 2'), ('Consultorio 3');
+
+INSERT INTO `personas` (`Nombre`, `ApellidoPaterno`, `ApellidoMaterno`, `Edad`, `Sexo`)
+VALUES ('Juan', 'Perez', 'Lopez', 25, 'M'), ('Maria', 'Gonzalez', 'Garcia', 30, 'F'), ('Pedro', 'Gomez', 'Gonzalez', 35, 'M');
+
+INSERT INTO `medicos` (`PersonaID`, `consultorioID`)
+VALUES (1, 1), (2, 2), (3, 3);
