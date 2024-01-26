@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 #La ruta raiz es la pagina de inicio (aqui se muestra el formulario)
 @app.route('/')
-def index():
+def index(): 
     return render_template('Registro.html')
 #La ruta /registro es la que recibe los datos del formulario y se comunica exclusivamente conn la platilla html 
 # (ojo: la ruta /registro no se muestra en el navegador)
@@ -59,7 +59,8 @@ def diagnostico1():
     id_medico = medico_correspondiente[0]
     fecha_consulta = request.form['txtFecha']
     descripcion = request.form['txtDescripcion']
-    controlador.registrar_diagnostico(id_paciente, id_medico, fecha_consulta, descripcion)
+    enfermedad = request.form['txtEnfermedad']
+    controlador.registrar_diagnostico(id_paciente, id_medico, fecha_consulta, descripcion, enfermedad)
     return redirect('/')
 
 #####################################################################################################
@@ -67,10 +68,34 @@ def diagnostico1():
 #Se declara la ruta para el consultorio 2
 @app.route('/consultorio/2')
 def consultorio2():
-    return render_template('consultorio2.html')
+    ultimo_paciente = controlador.extraer_paciente()
+    medico_correspondiente = controlador.medico_correspondiente(2) #El 2 es el id del medico(EL QUE ESTA EN LA BASE DE DATOS)
+    return render_template('consultorio2.html', ultimo_paciente=ultimo_paciente, medico_correspondiente=medico_correspondiente)
 
+@app.route('/consultorio2', methods=['POST'])
+def con2():
+    ultimo_paciente = controlador.extraer_paciente()
+    id_paciente = ultimo_paciente[1]
+    nombre = request.form['txtNombre']
+    apellidopaterno = request.form['txtAP']
+    apellidomaterno = request.form['txtAM']
+    edad = request.form['txtEdad']
+    sexo = request.form['txtSexo']
+    controlador.editar_persona(id_paciente, nombre, apellidopaterno, apellidomaterno, edad, sexo)
+    return redirect('/consultorio/2')
 
-
+#Ruta para registrar el diagnostico del paciente
+@app.route('/diagnostico2', methods=['POST', 'GET'])
+def diagnostico2():
+    ultimo_paciente = controlador.extraer_paciente()
+    id_paciente = ultimo_paciente[0]
+    medico_correspondiente = controlador.medico_correspondiente(2)
+    id_medico = medico_correspondiente[0]
+    fecha_consulta = request.form['txtFecha']
+    descripcion = request.form['txtDescripcion']
+    enfermedad = request.form['txtEnfermedad']
+    controlador.registrar_diagnostico(id_paciente, id_medico, fecha_consulta, descripcion, enfermedad)
+    return redirect('/')
 
 #####################################################################################################
 ##################################Seccion exclusiva para el consultorio 3
