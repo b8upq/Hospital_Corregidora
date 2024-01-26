@@ -60,12 +60,24 @@ def medico_correspondiente(medico_id):
     return medico_correspondiente
 
 #Funcion para registrar el diagnostico del paciente
-def registrar_diagnostico(paciente_id, medico_id, fecha_consulta, descripcion):
+def registrar_diagnostico(paciente_id, medico_id, fecha_consulta, descripcion, enfermedad):
     conexion = conexion_db()
     with conexion.cursor() as cursor:
-        cursor.execute("INSERT INTO diagnosticos(PacienteID, MedicoID, FechaConsulta, Descripcion) VALUES(%s, %s, %s, %s)", 
-                       (paciente_id, medico_id, fecha_consulta, descripcion))
+        cursor.execute("INSERT INTO diagnosticos(PacienteID, MedicoID, FechaConsulta, Descripcion, Enfermedad) VALUES(%s, %s, %s, %s, %s)", 
+                       (paciente_id, medico_id, fecha_consulta, descripcion, enfermedad))
         conexion.commit()
     
     conexion.close()
 
+# def contador_diagnosticos(medico_id):
+#     conexion = conexion_db()
+#     with conexion.cursor() as cursor:
+#         cursor.execute("""
+#             SELECT COUNT(*) AS total
+#             FROM diagnosticos
+#             WHERE MedicoID = %s
+#         """, (medico_id))
+#         contador_diagnosticos = cursor.fetchone()
+        
+#     conexion.close()
+#     return contador_diagnosticos
